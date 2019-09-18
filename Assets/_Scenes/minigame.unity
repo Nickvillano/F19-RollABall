@@ -1473,6 +1473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countText: {fileID: 163667772}
+  winText: {fileID: 1426515374}
   speed: 10
 --- !u!54 &1301688700
 Rigidbody:
