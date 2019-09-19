@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Vector3 jump = new Vector3(0.0f, 200.0f, 0.0f);
+        if (Input.GetKeyDown("space") && GetComponent<Rigidbody>().transform.position.y <= 0.5f)
+        {
+            rb.AddForce(jump);
+        }
 
         rb.AddForce(movement * speed); 
     }
@@ -37,11 +42,17 @@ public class PlayerController : MonoBehaviour
             count = count + 1;
             setCountText();
         }
+        else if (other.gameObject.CompareTag("Pick Up 5pts"))
+        {
+            other.gameObject.SetActive(false);
+            count = count + 5;
+            setCountText();
+        }
     }
      void setCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        if (count >= 28)
         {
             winText.text = "You Win!";
         }
